@@ -1,5 +1,8 @@
 package com.example.demo;
 
+import com.example.demo.Repository.PatientRecordRepository;
+import com.example.demo.controllers.PatientRecordController;
+import com.example.demo.model.PatientRecord;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -54,7 +57,7 @@ public class PatientRecordControllerTest {
 
     @Test
     public void getPatientById_success() throws Exception {
-        Mockito.when(patientRecordRepository.findById(RECORD_1.getPatientId())).thenReturn(java.util.Optional.of(RECORD_1));
+        Mockito.when(patientRecordRepository.findById(RECORD_1.getId())).thenReturn(java.util.Optional.of(RECORD_1));
 
         mockMvc.perform(MockMvcRequestBuilders
                         .get("/patient/1")
@@ -94,7 +97,7 @@ public class PatientRecordControllerTest {
                 .address("Cebu Philippines")
                 .build();
 
-        Mockito.when(patientRecordRepository.findById(RECORD_1.getPatientId())).thenReturn(Optional.of(RECORD_1));
+        Mockito.when(patientRecordRepository.findById(RECORD_1.getId())).thenReturn(Optional.of(RECORD_1));
         Mockito.when(patientRecordRepository.save(updatedRecord)).thenReturn(updatedRecord);
 
         MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.post("/patient")
@@ -110,7 +113,7 @@ public class PatientRecordControllerTest {
 
     @Test
     public void deletePatientById_success() throws Exception {
-        Mockito.when(patientRecordRepository.findById(RECORD_2.getPatientId())).thenReturn(Optional.of(RECORD_2));
+        Mockito.when(patientRecordRepository.findById(RECORD_2.getId())).thenReturn(Optional.of(RECORD_2));
 
         mockMvc.perform(MockMvcRequestBuilders
                         .delete("/patient/2")
