@@ -1,8 +1,7 @@
-package com.example.Patient.Repository;
+package in.ac.charusat.patientmgmtsystem.repository;
 
-import com.example.Patient.Model.PatientRecord;
+import in.ac.charusat.patientmgmtsystem.model.PatientRecord;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface PatientRecordRepository extends JpaRepository<PatientRecord, Integer> {
-
 }
