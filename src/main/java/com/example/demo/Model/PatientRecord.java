@@ -1,34 +1,37 @@
 package com.example.demo.Model;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.Id;
 
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Entity
-public class Patient {
+@Table(name = "patient_record")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+public class PatientRecord {
 
     @Id
-    private Integer patientId;
+    private Long patientId;
 
     private String name;
 
+    private Integer age;
+
     private String address;
 
-    public Patient(Integer patientId, String name, String address) {
-        this.patientId = patientId;
-        this.name = name;
-        this.address = address;
-    }
-
-    public Patient(){
-
-    }
-
-    public Integer getPatientId() {
+    public Long getPatientId() {
         return patientId;
     }
 
-    public void setPatientId(Integer patientId) {
+    public void setPatientId(Long patientId) {
         this.patientId = patientId;
     }
 
@@ -38,6 +41,14 @@ public class Patient {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
     }
 
     public String getAddress() {
