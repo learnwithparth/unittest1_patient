@@ -23,7 +23,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.hamcrest.Matchers.*;
 
 @WebMvcTest(PatientRecordController.class)
-public class PatientRecordControllerTest {
+public class PatientRecordRecordControllerTest {
     @Autowired
     MockMvc mockMvc;
     @Autowired
