@@ -1,6 +1,9 @@
 package com.example.demo;
 
+import Repository.PatientRecordRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import controller.PatientRecordController;
+import model.PatientRecord;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,9 +37,9 @@ public class PatientRecordControllerTest {
     @MockBean
     PatientRecordRepository patientRecordRepository;
 
-    PatientRecord RECORD_1 = new PatientRecord(1l, "Rayven Yor", 23, "Cebu Philippines");
-    PatientRecord RECORD_2 = new PatientRecord(2l, "David Landup", 27, "New York USA");
-    PatientRecord RECORD_3 = new PatientRecord(3l, "Jane Doe", 31, "New York USA");
+    PatientRecord RECORD_1 = new PatientRecord(1l, "Rayven Yor",  "Cebu Philippines");
+    PatientRecord RECORD_2 = new PatientRecord(2l, "David Landup", "New York USA");
+    PatientRecord RECORD_3 = new PatientRecord(3l, "Jane Doe",  "New York USA");
 
     @Test
     public void getAllRecords_success() throws Exception {
@@ -67,8 +70,8 @@ public class PatientRecordControllerTest {
     @Test
     public void createRecord_success() throws Exception {
         PatientRecord record = PatientRecord.builder()
+                .patientId("1")
                 .name("John Doe")
-                .age(47)
                 .address("New York USA")
                 .build();
 
@@ -88,7 +91,7 @@ public class PatientRecordControllerTest {
     @Test
     public void updatePatientRecord_success() throws Exception {
         PatientRecord updatedRecord = PatientRecord.builder()
-                .patientId(1l)
+                .PatientId("1")
                 .name("Rayven Zambo")
                 .age(23)
                 .address("Cebu Philippines")
