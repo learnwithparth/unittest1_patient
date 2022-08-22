@@ -8,7 +8,7 @@ const PatientList = () => {
   const [students, setStudents] = useState(null);
 
   useEffect(() => {
-    axios.get("http://localhost:8080/listStudents").then((response) => {
+    axios.get("http://localhost:8080/listPatientRecord").then((response) => {
       console.log(response)
       setStudents(response.data);
       // console.log(students)
@@ -19,8 +19,8 @@ const PatientList = () => {
 
   const handleDelete = (id) => {
     console.log(id)
-    axios.delete(`http://localhost:8080/student/${id}`).then((response) => {
-      setStudents(students.filter((student)=>student.id!==id));
+    axios.delete(`http://localhost:8080/patient/${id}`).then((response) => {
+      setStudents(students.filter((student)=>student.patientId!==id));
       // setStudents(response.data)
     })
   }
@@ -31,21 +31,22 @@ const PatientList = () => {
       <Table striped bordered hover>
       <thead>
         <tr>
+
+          <th>Id</th>
           <th>Name</th>
-          <th>Email</th>
           <th>Address</th>
-          <th>Update</th>
-          <th>Edit</th>
+          <th>age</th>
         </tr>
       </thead>
       <tbody>
         {students && students.map((student) => {
           return <tr>
-          <td>{student.id}</td>
+          <td>{student.patientId}</td>
           <td>{student.name}</td>
           <td>{student.address}</td>
-          <td><Link to={`/student/${student.id}`} ><i className="fa-solid fa-pen-to-square text-primary" ></i></Link></td>
-          <td><i className="fa-solid fa-trash-can text-danger" onClick={() => {handleDelete(student.id)}}></i></td>
+          <td>{student.age}</td>
+          <td><Link to={`/patient/${student.patientId}`} ><i className="fa-solid fa-pen-to-square text-primary" ></i></Link></td>
+          <td><i className="fa-solid fa-trash-can text-danger" onClick={() => {handleDelete(student.patientId)}}></i></td>
         </tr>
         })}
       </tbody>

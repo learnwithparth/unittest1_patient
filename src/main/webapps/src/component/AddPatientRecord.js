@@ -16,6 +16,7 @@ const AddPatientRecord = () => {
   const [age, setAge] = useState();
 
   useEffect(()=>{
+    console.log(patientId)
     if(patientId){
       console.log(patientId)
       axios.get(`http://localhost:8080/patient/${patientId}`)
@@ -23,7 +24,7 @@ const AddPatientRecord = () => {
         setAddress(response.data.address)
         setName(response.data.name)
         setAge(response.data.age)
-        setId(response.data.id)
+        setId(response.data.patientId)
       })
     }
   }, [])

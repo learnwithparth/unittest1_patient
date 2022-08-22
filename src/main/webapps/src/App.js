@@ -14,8 +14,8 @@ function App() {
         <Navigationbar />
         <Routes>
           <Route path='/adddata' element={<AddPatientRecord />}/>
-          <Route path='/studentlist' element={<PatientList />}/>
-          <Route path='/student/:studentId' element={<AddPatientRecord />}/>
+          <Route path='/patientlist' element={<PatientList />}/>
+          <Route path='/patient/:patientId' element={<AddPatientRecord />}/>
         </Routes>
       </BrowserRouter>
     </div>
