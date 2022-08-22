@@ -22,7 +22,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static org.hamcrest.Matchers.*;
 
-@WebMvcTest(PatientRecordController.class)
+@WebMvcTest(PatientRecordControllerTest.class)
 public class PatientRecordControllerTest {
     @Autowired
     MockMvc mockMvc;
@@ -47,9 +47,9 @@ public class PatientRecordControllerTest {
         mockMvc.perform(MockMvcRequestBuilders
                         .get("/patient")
                         .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$", hasSize(3)))
-                .andExpect(jsonPath("$[2].name", is("Jane Doe")));
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$", Matchers.hasSize(3)))
+                .andExpect(MockMvcResultMatchers.jsonPath("$[2].name", Matchers.is("Jane Doe")));
     }
 
     @Test
@@ -59,9 +59,9 @@ public class PatientRecordControllerTest {
         mockMvc.perform(MockMvcRequestBuilders
                         .get("/patient/1")
                         .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$", notNullValue()))
-                .andExpect(jsonPath("$.name", is("Rayven Yor")));
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$", Matchers.notNullValue()))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.name", Matchers.is("Rayven Yor")));
     }
 
     @Test
@@ -80,9 +80,9 @@ public class PatientRecordControllerTest {
                 .content(this.mapper.writeValueAsString(record));
 
         mockMvc.perform(mockRequest)
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$", notNullValue()))
-                .andExpect(jsonPath("$.name", is("John Doe")));
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$", Matchers.notNullValue()))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.name", Matchers.is("John Doe")));
     }
 
     @Test
@@ -103,9 +103,9 @@ public class PatientRecordControllerTest {
                 .content(this.mapper.writeValueAsString(updatedRecord));
 
         mockMvc.perform(mockRequest)
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$", notNullValue()))
-                .andExpect(jsonPath("$.name", is("Rayven Zambo")));
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$", Matchers.notNullValue()))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.name", Matchers.is("Rayven Zambo")));
     }
 
     @Test
@@ -115,6 +115,6 @@ public class PatientRecordControllerTest {
         mockMvc.perform(MockMvcRequestBuilders
                         .delete("/patient/2")
                         .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk());
+                .andExpect(MockMvcResultMatchers.status().isOk());
     }
 }
