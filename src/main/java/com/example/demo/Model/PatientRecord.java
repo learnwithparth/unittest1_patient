@@ -1,4 +1,4 @@
-package com.example.demo.Model;
+package com.example.demo.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -6,35 +6,29 @@ import javax.persistence.Id;
 @Entity
 public class PatientRecord {
     @Id
-    private Long id;
-
+    private Long patientId;
     private String name;
-
     private String address;
-    private String age;
+    private Integer age;
 
-    public String getAge() {
-        return age;
+
+    public PatientRecord() {
+
     }
 
-    public void setAge(String age) {
-        this.age = age;
-    }
-
-    public PatientRecord(Long id, String name, String address, String age) {
-        this.id = id;
+    public PatientRecord(Long patientId, String name, String address, Integer age) {
+        this.patientId = patientId;
         this.name = name;
         this.address = address;
         this.age = age;
     }
 
-
-    public Long getId() {
-        return id;
+    public Long getPatientId() {
+        return patientId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setPatientId(Long patientId) {
+        this.patientId = patientId;
     }
 
     public String getName() {
@@ -53,7 +47,11 @@ public class PatientRecord {
         this.address = address;
     }
 
+    public Integer getAge() {
+        return age;
+    }
 
-
-
+    public void setAge(Integer age) {
+        this.age = age;
+    }
 }
