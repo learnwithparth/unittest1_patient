@@ -1,35 +1,29 @@
 package com.example.demo.entity;
 
+import lombok.Builder;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class Patient {
+@Builder
+public class PatientRecord {
 
     @Id
-    private Long id;
+    private Long patientId;
+
     private String name;
     private Integer age;
     private String address;
 
-    public Patient(Long id, String name,Integer age, String address) {
-        this.id = id;
+    public PatientRecord(Long patientId, String name, Integer age ,String address) {
+        this.patientId = patientId;
         this.name = name;
-        this.age = age;
         this.address = address;
+        this.age = age;
     }
 
-    public Patient() {
 
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public Integer getAge() {
         return age;
@@ -37,6 +31,20 @@ public class Patient {
 
     public void setAge(Integer age) {
         this.age = age;
+    }
+
+    public PatientRecord() {
+    }
+
+
+
+
+    public Long getPatientId() {
+        return patientId;
+    }
+
+    public void setPatientId(Long patientId) {
+        this.patientId = patientId;
     }
 
     public String getName() {
@@ -54,4 +62,8 @@ public class Patient {
     public void setAddress(String address) {
         this.address = address;
     }
+
+
+
+
 }
