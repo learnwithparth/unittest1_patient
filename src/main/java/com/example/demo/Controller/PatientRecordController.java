@@ -1,53 +1,47 @@
 package com.example.demo.Controller;
 
-import com.example.demo.Model.PatientRecord;
 import com.example.demo.Repository.PatientRecordRepository;
+import com.example.demo.model.PatientRecord;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins="http://localhost:3000")
+@CrossOrigin(origins = "http://localhost:3000")
 public class PatientRecordController {
-
     @Autowired
     PatientRecordRepository patientRecordRepository;
 
     @GetMapping("/patient")
-    public List<PatientRecord> getAllPatientsRecord() {
+    public List<PatientRecord> getAllPatients(){
         return patientRecordRepository.findAll();
     }
 
-    @GetMapping("/patient/{id}")
-    public PatientRecord getPatientRecord(@PathVariable long id) {
-        return patientRecordRepository.findById(id).get();
-    }
-    @DeleteMapping("/patient/{id}")
-    public List<PatientRecord> deletePatientRecord(@PathVariable long id) {
-        patientRecordRepository.delete(patientRecordRepository.findById(id).get());
-        return patientRecordRepository.findAll();
+    @GetMapping("/patient/{patientId}")
+    public PatientRecord getPatient(@PathVariable Long patientId){
+        return patientRecordRepository.findById(patientId).get();
     }
 
-    // Add new student
     @PostMapping("/patient")
-    public List<PatientRecord> addPatientRecord(@RequestBody PatientRecord patientRecord) {
+    public List<PatientRecord> addPatient(@RequestBody PatientRecord patientRecord){
         patientRecordRepository.save(patientRecord);
         return patientRecordRepository.findAll();
     }
 
-
-    @PutMapping("/patient/{id}")
-    public List<PatientRecord> updatePatientRecord (@RequestBody PatientRecord patientRecord, @PathVariable long id) {
-        PatientRecord patientObj = patientRecordRepository.findById(id).get();
-        patientObj.setName(patientRecord.getName());
-        patientObj.setAddress(patientRecord.getAddress());
-        patientObj.setAge(patientRecord.getAge());
-        patientRecordRepository.save(patientObj);
+    @PutMapping("updatepatient/{patientId}")
+    public List<PatientRecord> updatePatient(@RequestBody PatientRecord patientRecord,@PathVariable Long patientId){
+        PatientRecord patientRecordObj =patientRecordRepository.findById(patientId).get();
+        patientRecordObj.setName(patientRecord.getName());
+        patientRecordObj.setAge(patientRecord.getAge());
+        patientRecordObj.setAddress(patientRecord.getAddress());
+        patientRecordRepository.save(patientRecordObj);
         return patientRecordRepository.findAll();
-
     }
 
-
-
+    @DeleteMapping("/patient/{patientId}")
+    public List<PatientRecord> deletePatient(@PathVariable Long patientId){
+        patientRecordRepository.delete(patientRecordRepository.findById(patientId).get());
+        return patientRecordRepository.findAll();
+    }
 }

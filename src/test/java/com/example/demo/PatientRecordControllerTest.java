@@ -1,5 +1,8 @@
 package com.example.demo;
 
+import com.example.demo.Controller.PatientRecordController;
+import com.example.demo.Repository.PatientRecordRepository;
+import com.example.demo.model.PatientRecord;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;

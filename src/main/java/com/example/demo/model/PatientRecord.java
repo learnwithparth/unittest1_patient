@@ -1,32 +1,35 @@
- package in.ac.charusat.patientmgmtsystem.model;
+package com.example.demo.model;
+
+import lombok.Builder;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
+@Builder
 public class PatientRecord {
-
     @Id
-    private Integer id;
+    private  Long patientId;
     private String name;
+    private int age;
     private String address;
 
-    public PatientRecord(Integer id, String name, String address) {
-        this.id = id;
+    public PatientRecord(Long patientId, String name, int age, String address) {
+        this.patientId = patientId;
         this.name = name;
+        this.age = age;
         this.address = address;
     }
 
     public PatientRecord() {
-
     }
 
-    public Integer getId() {
-        return id;
+    public Long getPatientId() {
+        return patientId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setPatientId(Long patientId) {
+        this.patientId = patientId;
     }
 
     public String getName() {
@@ -35,6 +38,14 @@ public class PatientRecord {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 
     public String getAddress() {
