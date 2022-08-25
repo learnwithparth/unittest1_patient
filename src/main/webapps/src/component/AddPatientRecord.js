@@ -86,7 +86,7 @@ const AddPatientRecord = () => {
 
         <Form.Group className="mb-3" controlId="formBasicPassword">
           <Form.Label>Age</Form.Label>
-          <Form.Control value={age} name="age" onChange={changeValue} type="text" placeholder="Enter Name" />
+          <Form.Control value={age} name="age" onChange={changeValue} type="text" placeholder="Enter age" />
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicPassword">
