@@ -23,7 +23,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.hamcrest.Matchers.*;
 
 @WebMvcTest(PatientRecordController.class)
-public class PatientRecordControllerTest {
+public class atientRecordControllerTest {
     @Autowired
     MockMvc mockMvc;
     @Autowired
@@ -54,7 +54,7 @@ public class PatientRecordControllerTest {
 
     @Test
     public void getPatientById_success() throws Exception {
-        Mockito.when(patientRecordRepository.findById(RECORD_1.getPatientId())).thenReturn(java.util.Optional.of(RECORD_1));
+        Mockito.when(patientRecordRepository.findById(RECORD_1.getPatientId())).thenReturn(Optional.of(RECORD_1));
 
         mockMvc.perform(MockMvcRequestBuilders
                         .get("/patient/1")
