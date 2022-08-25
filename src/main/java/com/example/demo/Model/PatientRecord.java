@@ -1,9 +1,13 @@
 package com.example.demo.model;
 
+import lombok.Builder;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
+@Builder
+
 public class PatientRecord {
     @Id
     private Long patientId;
@@ -13,6 +17,9 @@ public class PatientRecord {
 
 
     public PatientRecord() {
+    }
+
+    public PatientRecord(long patientId, String rayven_yor, int i, String cebu_philippines) {
 
     }
 
@@ -22,6 +29,7 @@ public class PatientRecord {
         this.address = address;
         this.age = age;
     }
+
 
     public Long getPatientId() {
         return patientId;
