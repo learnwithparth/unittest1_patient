@@ -69,7 +69,8 @@ public class PatientRecordControllerTest {
 
     @Test
     public void createRecord_success() throws Exception {
-        PatientRecord record = PatientRecord.builder()
+        PatientRecord record = PatientRecord
+                .builder()
                 .name("John Doe")
                 .age(47)
                 .address("New York USA")

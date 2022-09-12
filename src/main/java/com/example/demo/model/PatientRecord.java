@@ -10,29 +10,31 @@ import javax.persistence.Id;
 public class PatientRecord {
 
     @Id
-    private Long id;
-
+    private Long patientId;
+    private String name;
     private Integer age;
+
+    private String address;
 
     public PatientRecord()
     {
 
     }
 
-    public PatientRecord(Long id, String name, Integer age,String address) {
-       this.id = id;
+    public PatientRecord(Long PatientId, String name, Integer age,String address) {
+       this.patientId = PatientId;
      this.name = name;
      this.age=age;
      this.address = address;
     }
 
     public void setId(Long id) {
-        this.id = id;
+        this.patientId = id;
     }
 
     public Long getPatientId()
     {
-        return id;
+        return patientId;
     }
     public Integer getAge() {
         return age;
@@ -56,10 +58,5 @@ public class PatientRecord {
     public void setAddress(String address) {
         this.address = address;
     }
-
-    private String name;
-    private String address;
-
-
 
 }

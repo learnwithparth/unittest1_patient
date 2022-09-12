@@ -4,6 +4,9 @@ import Card from 'react-bootstrap/Card';
 import axios from 'axios'
 import Button from 'react-bootstrap/Button'
 import {Link} from 'react-router-dom'
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
+
 export default function PatientList() {
     const[patients,setPatients]=useState([])
     useEffect(()=>{
@@ -14,7 +17,7 @@ export default function PatientList() {
     let deleteRec=(id,event)=>{
         event.preventDefault();
         axios.delete('http://localhost:8080/patient/'+id)
-            .then(response=>alert(response.data))
+            .then(response=> alert(response.data))
             .catch(error=>alert(error))
     }
     return (
@@ -33,12 +36,13 @@ export default function PatientList() {
                     </thead>
                     <tbody>
                     {patients.map((patient)=>
-                        <tr key={patient.id}>
-                            <td>{patient.id}</td>
-                            <td>{patient.age}</td>
+                        <tr key={patient.patientId}>
+                            <td>{patient.patientId}</td>
                             <td>{patient.name}</td>
+                            <td>{patient.age}</td>
                             <td>{patient.address}</td>
-                            <td><Link to={"/updatedStud/"+patient.id}><Button variant="primary">Edit</Button></Link>{' '}<Button variant="danger" onClick={deleteRec.bind(this,patient.id)} >Delete</Button></td>
+                            <td><Link to={"/updatePatient/"+patient.patientId}><EditIcon /></Link>
+                            {' '}<DeleteIcon color="error" onClick={deleteRec.bind(this,patient.patientId)} /></td>
                         </tr>)}
                     </tbody>
                 </Table>

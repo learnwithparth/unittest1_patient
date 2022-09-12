@@ -21,7 +21,6 @@ public class PatientRecordController {
 
     @PostMapping("/patient")
     public String addStudent(@RequestBody PatientRecord patient){
-        System.out.println("Hello");
             patientRecordRepository.save(patient);
             return "Record saved Successfully";
 
@@ -43,7 +42,9 @@ public class PatientRecordController {
     public String updateStudent(@RequestBody PatientRecord patient, @PathVariable Long id) {
         PatientRecord studentObj = patientRecordRepository.findById((id)).get();
         studentObj.setName(patient.getName());
+        studentObj.setAge(patient.getAge());
         studentObj.setAddress(patient.getAddress());
+        patientRecordRepository.save(studentObj);
 //        studentRepository.save(studentObj);
         return "Record is updated";
     }

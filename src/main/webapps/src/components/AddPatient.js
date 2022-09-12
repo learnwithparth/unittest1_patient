@@ -30,38 +30,44 @@ export default function AddPatient() {
             setName(event.target.value);
 
         else if(event.target.name==='age')
-            setAddress(event.target.value)
+            setAge(event.target.value)
 
         else if(event.target.name==='address')
             setAddress(event.target.value)
     }
 
-    let saveStudent = (event) => {
-        event.preventDefault();
+    // let saveStudent = (event) => {
+    //     event.preventDefault();
         
-          axios
-            .post("http://localhost:8080/patient", patient)
-            .then((response) => {
-              if (response.data != null) {
-                alert("success", "Record added successfully");
-              }
-            })
-            .catch((error) => alert("danger", "Error"));
-      };
+    //       axios
+    //         .post("http://localhost:8080/patient", patient)
+    //         .then((response) => {
+    //           if (response.data != null) {
+    //             alert("success", "Record added successfully");
+    //           }
+    //         })
+    //         .catch((error) => alert("danger", "Error"));
+    //   };
 
     let addPatient = () => {
+        debugger
         if(patientId===null)
         {
-            axios.post("http://localhost:8080/patients",patient)
+            
+            axios.post("http://localhost:8080/patient",patient)
                 .then(response=>{alert(response.data)})
                 .catch(error=>alert(error));
         }
         else
         {
-            axios.put("http://localhost:8080/patient"+patientId,patient)
+            axios.put("http://localhost:8080/patient/"+patientId,patient)
                 .then(response=>alert(response.data))
                 .catch(error=>alert(error))
         }
+        setId('');
+        setAge('');
+        setAddress('');
+        setName('');
 
     }
     useEffect(()=>
@@ -70,7 +76,7 @@ export default function AddPatient() {
         {
             axios.get("http://localhost:8080/patient/"+patientId)
                 .then(response=>{
-                    setId(response.data.id)
+                    setId(response.data.patientId)
                     setName(response.data.name)
                     setAge(response.data.age)
                     setAddress(response.data.address)

@@ -12,6 +12,7 @@ export default function NavigationBar() {
                     <Nav className="me-auto">
                         <Link to="/addPatient" className='nav-link'>Add Patient</Link>
                         <Link to="/showPatient" className='nav-link'>Patient List</Link>
+                        <Link to="/register" className='nav-link'>Register</Link>
                     </Nav>
                 </Container>
             </Navbar>
